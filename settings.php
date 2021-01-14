@@ -25,7 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
-    $settings = new admin_settingpage('local_quick_course_completion', new lang_string('pluginname', 'local_quick_course_completion'));
+    $settings = new admin_settingpage('local_quick_course_completion',
+            new lang_string('pluginname', 'local_quick_course_completion'));
     $ADMIN->add('localplugins', $settings);
 
     $settings->add(new admin_setting_configcheckbox('local_quick_course_completion/enable',

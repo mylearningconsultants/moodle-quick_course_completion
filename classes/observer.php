@@ -156,11 +156,11 @@ abstract class observer {
              OR mc.completionstate = '.COMPLETION_COMPLETE_PASS.'
              OR mc.completionstate = '.COMPLETION_COMPLETE_FAIL.'
                 )
-             AND c.id = ?   
-             AND ra.userid = ?   
+             AND c.id = ?
+             AND ra.userid = ?
         ';
 
-        // Loop through completions, and mark as complete
+        // Loop through completions, and mark as complete.
         $rs = $DB->get_recordset_sql($sql, [$courseid, $userid]);
         foreach ($rs as $record) {
             $completion = new completion_criteria_completion((array) $record, DATA_OBJECT_FETCH_BY_KEY);
@@ -178,7 +178,7 @@ abstract class observer {
     public static function completion_criteria_grade($courseid, $userid) {
         global $DB;
 
-        // Get all users who meet this criteria
+        // Get all users who meet this criteria.
         $sql = '
             SELECT DISTINCT
                 c.id AS course,
@@ -215,11 +215,11 @@ abstract class observer {
             AND c.enablecompletion = 1
             AND cc.id IS NULL
             AND gg.finalgrade >= cr.gradepass
-            AND c.id = ?   
-            AND ra.userid = ?   
+            AND c.id = ?
+            AND ra.userid = ?
         ';
 
-        // Loop through completions, and mark as complete
+        // Loop through completions, and mark as complete.
         $rs = $DB->get_recordset_sql($sql, [$courseid, $userid]);
         foreach ($rs as $record) {
             $completion = new completion_criteria_completion((array) $record, DATA_OBJECT_FETCH_BY_KEY);
@@ -249,7 +249,7 @@ abstract class observer {
             }
 
             // Save time started.
-            $timestarted = time() + 1; // +1 otherwise It cannot process criteria completions
+            $timestarted = time() + 1; // +1 otherwise It cannot process criteria completions.
 
             // Grab all criteria and their associated criteria completions.
             $sql = 'SELECT DISTINCT c.id AS course, cr.id AS criteriaid, crc.userid AS userid,

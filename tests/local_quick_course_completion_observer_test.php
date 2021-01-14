@@ -58,7 +58,8 @@ class local_quick_course_completion_observer_test extends advanced_testcase {
 
         $this->coursecontext = context_course::instance($this->course->id);
 
-        $this->module = $this->getDataGenerator()->create_module('assign', ['course' => $this->course->id, 'completion' => COMPLETION_TRACKING_MANUAL]);
+        $this->module = $this->getDataGenerator()->create_module('assign',
+                ['course' => $this->course->id, 'completion' => COMPLETION_TRACKING_MANUAL]);
         $this->cm = get_coursemodule_from_id('assign', $this->module->cmid);
 
         // Set completion rules.
